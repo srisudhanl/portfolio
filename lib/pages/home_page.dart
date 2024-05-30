@@ -113,15 +113,6 @@ class _HomePageState extends State<HomePage> {
                 ContactSection(
                   key: navBarKeys[3],
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  width: double.maxFinite,
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Made by Srisudhan with Flutter.",
-                    style: TextStyle(fontWeight: FontWeight.w400, color: MyConst.whiteSecondary),
-                  ),
-                ),
                 FooterWidget()
               ],
             ),
