@@ -1,5 +1,6 @@
 import 'dart:js' as js;
 
+import 'package:emailjs/emailjs.dart';
 import 'package:flutter/material.dart';
 
 import '../myConst.dart';
@@ -13,6 +14,9 @@ class ContactSection extends StatefulWidget {
 }
 
 class _ContactSectionState extends State<ContactSection> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController messageContrroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +52,8 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 700),
-            child: const CustomTextField(
+            child: CustomTextField(
+              controller: messageContrroller,
               hintText: "Your Message",
               maxLines: 16,
             ),
@@ -62,7 +67,28 @@ class _ContactSectionState extends State<ContactSection> {
               width: double.maxFinite,
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: MyConst.yellowPrimary, padding: const EdgeInsets.all(20)),
-                  onPressed: () {},
+                  onPressed: () async{
+                    Map<String, dynamic> templateParams = {
+                      'from_name':nameController.text.trim(),
+                      'to_name':"Srisudhan",
+                      'message':messageContrroller.text.trim()
+                    };
+
+                    try {
+                      await EmailJS.send(
+                        MyConst.emailJsServiceId,
+                        MyConst.emailJsTemplateId,
+                        templateParams,
+                        const Options(
+                          publicKey: MyConst.emailJsPublicKey,
+                          privateKey: MyConst.emailJsPrivateKey,
+                        ),
+                      );
+                      print('SUCCESS!');
+                    } catch (error) {
+                      print(error.toString());
+                    }
+                  },
                   child: const Text(
                     "Get in touch",
                     style: TextStyle(
@@ -123,17 +149,19 @@ class _ContactSectionState extends State<ContactSection> {
   }
 
   Widget buildNameAndEmailWidgetDesktop() {
-    return const Row(
+    return Row(
       children: [
         Flexible(
             child: CustomTextField(
+              controller: nameController,
           hintText: "Your Name",
         )),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         Flexible(
             child: CustomTextField(
+              controller: emailController,
           hintText: "Your Email",
         )),
       ],
@@ -141,17 +169,19 @@ class _ContactSectionState extends State<ContactSection> {
   }
 
   Widget buildNameAndEmailWidgetMobile() {
-    return const Column(
+    return Column(
       children: [
         Flexible(
             child: CustomTextField(
+              controller: nameController,
           hintText: "Your Name",
         )),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Flexible(
             child: CustomTextField(
+              controller: emailController,
           hintText: "Your Email",
         )),
       ],

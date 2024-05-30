@@ -17,7 +17,7 @@ class MyConst {
     "Skills",
     "Projects",
     "Contact",
-    "Blog",
+    "Resume",
   ];
 
   static List<IconData> navIcons = [
@@ -51,6 +51,10 @@ class MyConst {
   static const String github = "https://github.com/srisudhanl";
   static const String telegram = "https://t.me/@Srisudhan0403";
   static const String linkedIn = "https://www.linkedin.com/in/srisudhan-lakshmanan-077219248/";
+  static const String emailJsServiceId = "service_uaiotgl";
+  static const String emailJsPublicKey = "g7b_Tt0WpmzH2eLMD";
+  static const String emailJsPrivateKey = "LZM-lyb1GXQN9C6eQJTpf";
+  static const String emailJsTemplateId = "template_5qqhqu6";
 }
 
 bool isWeb() {

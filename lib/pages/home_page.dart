@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/myConst.dart';
+import 'package:portfolio/pages/resume_page.dart';
 import 'package:portfolio/widgets/contact_section.dart';
 import 'package:portfolio/widgets/customDrawer.dart';
 import 'package:portfolio/widgets/footer_widget.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<GlobalKey> navBarKeys = List.generate(4, (index) => GlobalKey());
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -50,7 +52,9 @@ class _HomePageState extends State<HomePage> {
                 isWeb()
                     ? constraints.maxWidth >= MyConst.minDesktopSize
                         ? HeaderWeb(
-                            onNavMenuTap: (int navIndex) {scrollToSection(navIndex);},
+                            onNavMenuTap: (int navIndex) {
+                              scrollToSection(navIndex);
+                            },
                           )
                         : HeaderMobile(
                             onTap: () {},
@@ -122,11 +126,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void scrollToSection(int navIndex){
-    if(navIndex == 4){
+  void scrollToSection(int navIndex) {
+    if (navIndex == 4) {
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
       return;
     }
     final key = navBarKeys[navIndex];
-    Scrollable.ensureVisible(key.currentContext!,duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
+    Scrollable.ensureVisible(key.currentContext!, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 }
