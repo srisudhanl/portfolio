@@ -70,9 +70,21 @@ class _HomePageState extends State<HomePage> {
                       ),
                 isWeb()
                     ? constraints.maxWidth >= MyConst.minDesktopSize + 280
-                        ? const MainDesktop()
-                        : const MainMobile()
-                    : const MainMobile(),
+                        ? MainDesktop(
+                            onTap: () {
+                              scrollToSection(3);
+                            },
+                          )
+                        : MainMobile(
+                            onTap: () {
+                              scrollToSection(3);
+                            },
+                          )
+                    : MainMobile(
+                        onTap: () {
+                          scrollToSection(3);
+                        },
+                      ),
                 Container(
                   key: navBarKeys[1],
                   height: isWeb()
@@ -128,7 +140,7 @@ class _HomePageState extends State<HomePage> {
 
   void scrollToSection(int navIndex) {
     if (navIndex == 4) {
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
       return;
     }
     final key = navBarKeys[navIndex];

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../myConst.dart';
 
 class MainDesktop extends StatelessWidget {
-  const MainDesktop({super.key});
+  final VoidCallback onTap;
+  const MainDesktop({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class MainDesktop extends StatelessWidget {
                 width: 400,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: MyConst.yellowPrimary,padding: EdgeInsets.all(20)),
-                  onPressed: () {},
+                  onPressed: () => onTap!(),
                   child: const Text(
                     "Get in touch",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: MyConst.whitePrimary),

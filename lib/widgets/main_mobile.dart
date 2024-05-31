@@ -4,7 +4,8 @@ import '../myConst.dart';
 
 
 class MainMobile extends StatelessWidget {
-  const MainMobile({super.key});
+  final VoidCallback onTap;
+  const MainMobile({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class MainMobile extends StatelessWidget {
             width: 250,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: MyConst.yellowPrimary, padding: EdgeInsets.all(20)),
-              onPressed: () {},
+              onPressed: () => onTap!(),
               child: const Text(
                 "Get in touch",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: MyConst.whitePrimary),

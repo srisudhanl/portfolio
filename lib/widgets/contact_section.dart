@@ -84,6 +84,9 @@ class _ContactSectionState extends State<ContactSection> {
                           privateKey: MyConst.emailJsPrivateKey,
                         ),
                       );
+                      nameController.clear();
+                      emailController.clear();
+                      messageContrroller.clear();
                       print('SUCCESS!');
                     } catch (error) {
                       print(error.toString());
