@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
 
   void scrollToSection(int navIndex) {
     if (navIndex == 4) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumeScreen()));
       return;
     }
     final key = navBarKeys[navIndex];

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:portfolio/myConst.dart';
 
-class ResumePage extends StatefulWidget {
-  const ResumePage({super.key});
+class ResumeScreen extends StatefulWidget {
+  const ResumeScreen({super.key});
 
   @override
-  State<ResumePage> createState() => _ResumePageState();
+  State<ResumeScreen> createState() => _ResumeScreenState();
 }
 
-class _ResumePageState extends State<ResumePage> {
+class _ResumeScreenState extends State<ResumeScreen> {
   @override
   Widget build(BuildContext context) {
     final pdfPinchController = PdfControllerPinch(
