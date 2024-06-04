@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flutter-web-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flutter-web
+  template:
+    metadata:
+      labels:
+        app: flutter-web
+    spec:
+      imagePullSecrets:
+        - name: gpstrack-cloud-secret
+      containers:
+        - name: portfolio-web-container
+          image: asia-south1-docker.pkg.dev/gpstrack-cloud/fleettrack/portfolio-flutter-web:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
